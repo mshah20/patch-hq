@@ -1,0 +1,44 @@
+.following-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-input-container {
+    margin: 50px 0;
+}
+
+.game-input {
+    width: 400px;
+    height: 40px;
+    max-width: 80vw;
+    padding: 0 10px;
+    font-size: 1rem;
+}
+
+.following-page-subheader-container {
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    width: 90vw;
+}
+
+.following-page-subheader {
+    min-width: fit-content;
+}
+
+.subheader-divider-with-expand {
+    margin: 0px 25px 0px 25px;
+    width: 90%;
+}
+
+.icon {
+    cursor: pointer;
+    user-select: none;
+    font-size: 30px;
+}
+
+.subheader-divider-without-expand {
+    margin-left: 25px;
+    width: 100%;
+}

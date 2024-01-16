@@ -1,0 +1,32 @@
+.patch-card-container {
+    background-color: #dfe6e9;
+    /* box-shadow: 0px 0px 1px;  */
+    border: 2px solid #b2bec3;
+}
+
+.patch-card-container > * {
+    padding: 15px 10px;
+}
+
+.patch-card-header-container {
+    /* background-color: yellow; */
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+
+.patch-card-description-container {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.patch-card-description-container > a {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

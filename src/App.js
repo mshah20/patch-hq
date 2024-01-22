@@ -32,8 +32,6 @@ const App = () => {
       {!cookies.consent && 
         <CookieConsentPopup setCookie={setCookie} />
       }
-      {/* {console.log('cookie: ', cookies)} */}
-      {/* {console.log('cookies.followedGamesAndColors:', cookies.followedGamesAndColors)} */}
     </>  
   );
 }

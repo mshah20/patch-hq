@@ -12,12 +12,8 @@ const HomePage = ({ cookies }) => {
         Object.entries(followedGamesObject).forEach(([key, _]) => {
             patches[key] && (Object.entries(patches[key]).forEach(([key2, value2]) => {
                 arr.push(value2);
-                // return <PatchCard cookies={cookies} game={key} date={value2.date} title={value2.title} url={value2.url} />
             }))
         });
-
-        // console.log("unsorted array = ", arr);
-        // console.log("sorted array = ", arr.sort(sortbyDate));
 
         arr.sort(sortbyDate);
 
@@ -31,7 +27,6 @@ const HomePage = ({ cookies }) => {
                 url={patch.url} 
             />
         })
-
     }
 
     return (
@@ -42,10 +37,8 @@ const HomePage = ({ cookies }) => {
                     <p className='home-page-placeholder-txt'>
                         It seems like you aren't following any games. Head over to the <b>Following</b> tab to get updates on your favorite games!
                     </p>
-
                 )}
                 {cookies.followedGamesAndColors && (listFollowedPatches(cookies.followedGamesAndColors))}
-             
             </div>
         </div>
     );

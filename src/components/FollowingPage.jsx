@@ -5,18 +5,16 @@ import { useState } from 'react';
 
 const handleKeyDown = (e) => {
     if(e.code === "Enter") {
-        // handleSearch();
+//         // handleSearch();
     }
 }
-
 
 const FollowingPage = ({ cookies, setCookie, removeCookie }) => {
     const [gameInput, setGameInput] = useState('');
     const [showFollowedGames, setShowFollowedGames] = useState(true);
 
     const listFollowedGames = (followedGamesObject) => {
-        // return Object.values(followedGamesObject).map((values) => {
-        return Object.entries(followedGamesObject).map(([key, value]) => {
+        return Object.entries(followedGamesObject).map(([key, _]) => {
             return <GameCard key={key} cookies={cookies} setCookie={setCookie} game={key} isFollowed={true} />
         })
     }
@@ -66,9 +64,7 @@ const FollowingPage = ({ cookies, setCookie, removeCookie }) => {
                     <GameCard game='Rainbow Six Siege' cookies={cookies} setCookie={setCookie} />
                     <GameCard game='The Crew Motorfest' cookies={cookies} setCookie={setCookie} />
                 </div>
-
             </div>
-
         </>
     );
 }

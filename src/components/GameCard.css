@@ -1,6 +1,5 @@
 .game-card-container {
     background-color: #dfe6e9;
-    /* box-shadow: 0px 0px 1px; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,10 +29,7 @@
 }
 
 .game-card-color-picker {
-    /* display: none; */
     position: absolute;
-    /* top: 9px; */
-    /* right: 9px; */
     z-index: 2;
 }
 

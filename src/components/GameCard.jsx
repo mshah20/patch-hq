@@ -6,17 +6,11 @@ import { defaultColors } from '../DefaultColors';
 
 
 const GameCard = ({ cookies, setCookie, game, isFollowed }) => {
-    // const [showColorPicker, setShowColorPicker] = useState(false);
-    // const [color, setColor] = useState('#fff');
 
     const [colorPicker, setColorPicker] = useState({
         displayColorPicker: false,
         color: '#fff'
     })
-
-    // const handleChangeComplete = (color) => {
-    //     setColor(color.hex);
-    // };
 
     const handleClick = () => {
         setColorPicker({...colorPicker, displayColorPicker: !colorPicker.displayColorPicker});
@@ -35,12 +29,11 @@ const GameCard = ({ cookies, setCookie, game, isFollowed }) => {
         setCookie('followedGamesAndColors', {...cookies.followedGamesAndColors, [`${game}`]: defaultColors[game]})
     }
 
-    const removeFollowedGame = (followedGamesObject, game) => {
+    const removeFollowedGame = (game) => {
         let followedGamesAndColors = cookies.followedGamesAndColors;
         delete followedGamesAndColors[game];
         setCookie('followedGamesAndColors', followedGamesAndColors);
     }
-
 
     return (
         <div className='game-card-container'>
@@ -67,10 +60,9 @@ const GameCard = ({ cookies, setCookie, game, isFollowed }) => {
                                 />
                         </div> : null}
                     </div>
-
                     
                     <h3 className='game-card-option-btn red-bg'
-                        onClick={() => {removeFollowedGame(cookies.followedGames, game)}}
+                        onClick={() => {removeFollowedGame(game)}}
                     >Remove</h3>
                 </div>
             )}

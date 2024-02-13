@@ -1,6 +1,5 @@
 .patch-card-container {
     background-color: #dfe6e9;
-    /* box-shadow: 0px 0px 1px;  */
     border: 2px solid #b2bec3;
 }
 
@@ -9,7 +8,6 @@
 }
 
 .patch-card-header-container {
-    /* background-color: yellow; */
     font-weight: bold;
     display: flex;
     justify-content: space-between;

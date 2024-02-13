@@ -38,7 +38,7 @@ const HomePage = ({ cookies }) => {
         <div>
             <Navbar />
             <div className='patch-cards-container'>
-                {(Object.keys(cookies.followedGamesAndColors).length === 0) && (
+                {((cookies.followedGamesAndColors === undefined) || (Object.keys(cookies.followedGamesAndColors).length === 0)) && (
                     <p className='home-page-placeholder-txt'>
                         It seems like you aren't following any games. Head over to the <b>Following</b> tab to get updates on your favorite games!
                     </p>

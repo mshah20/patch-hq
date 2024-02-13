@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { SketchPicker } from 'react-color';
 import { defaultColors } from '../DefaultColors';
 
-
 const GameCard = ({ cookies, setCookie, game, isFollowed }) => {
 
     const [colorPicker, setColorPicker] = useState({

@@ -2,16 +2,13 @@ import GameCard from './GameCard';
 import './FollowingPage.css';
 import Navbar from './Navbar';
 import { useState } from 'react';
-
-const handleKeyDown = (e) => {
-    if(e.code === "Enter") {
-//         // handleSearch();
-    }
-}
+import { patches } from '../AllPatches';
+import Select from 'react-select';
+import { defaultColors } from '../DefaultColors';
 
 const FollowingPage = ({ cookies, setCookie, removeCookie }) => {
-    const [gameInput, setGameInput] = useState('');
     const [showFollowedGames, setShowFollowedGames] = useState(true);
+    let gameOptions = [];
 
     const listFollowedGames = (followedGamesObject) => {
         return Object.entries(followedGamesObject).map(([key, _]) => {
@@ -19,17 +16,25 @@ const FollowingPage = ({ cookies, setCookie, removeCookie }) => {
         })
     }
 
+    const addFollowedGame = (game) => {
+        setCookie('followedGamesAndColors', {...cookies.followedGamesAndColors, [`${game}`]: defaultColors[game]})
+    }
+
+    Object.keys(patches).map((game) => (
+        gameOptions.push({ 'value': game, 'label': game })
+    ))
+
     return (
         <>
             <Navbar />
 
             <div className='following-page-container'>
                 <div className='game-input-container'>
-                    <input 
-                        className='game-input'
-                        value={gameInput}
-                        onChange={(e) => {setGameInput(e.target.value)}}
-                        onKeyDown={handleKeyDown}
+                    <Select
+                        className='game-input' 
+                        options={gameOptions}
+                        maxMenuHeight={160}
+                        onChange={(e) => {addFollowedGame(e.value)}}
                         placeholder='Find a game...'
                     />
                 </div>
@@ -58,7 +63,7 @@ const FollowingPage = ({ cookies, setCookie, removeCookie }) => {
                 </div>
 
                 <div className='top-games-container'>
-                <GameCard game='Fortnite' cookies={cookies} setCookie={setCookie} />
+                    <GameCard game='Fortnite' cookies={cookies} setCookie={setCookie} />
                     <GameCard game='Call of Duty: MWIII' cookies={cookies} setCookie={setCookie} />
                     <GameCard game='Call of Duty: Warzone' cookies={cookies} setCookie={setCookie} />
                     <GameCard game='Rainbow Six Siege' cookies={cookies} setCookie={setCookie} />

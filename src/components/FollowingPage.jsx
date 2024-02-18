@@ -1,10 +1,11 @@
 import GameCard from './GameCard';
-import './FollowingPage.css';
 import Navbar from './Navbar';
 import { useState } from 'react';
 import { patches } from '../AllPatches';
 import Select from 'react-select';
 import { defaultColors } from '../DefaultColors';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const FollowingPage = ({ cookies, setCookie, removeCookie }) => {
     const [showFollowedGames, setShowFollowedGames] = useState(true);
@@ -28,10 +29,11 @@ const FollowingPage = ({ cookies, setCookie, removeCookie }) => {
         <>
             <Navbar />
 
-            <div className='following-page-container'>
-                <div className='game-input-container'>
+            <div id='following-page-container' className='flex flex-col items-center'>
+                <div id='game-input-container' className='my-12'>
                     <Select
-                        className='game-input' 
+                        id='game-input'
+                        className='min-w-96 max-w-[80vw] h-10'
                         options={gameOptions}
                         maxMenuHeight={160}
                         onChange={(e) => {addFollowedGame(e.value)}}
@@ -39,16 +41,11 @@ const FollowingPage = ({ cookies, setCookie, removeCookie }) => {
                     />
                 </div>
 
-                <div className='following-page-subheader-container'>
-                    <h2 className='following-page-subheader'>Following</h2>
-                    <hr className='subheader-divider-with-expand' />
-                    <span className='material-symbols-outlined icon'
-                        onClick={() => {setShowFollowedGames(!showFollowedGames)}}
-                    >expand_more</span>
-                    <span className='material-symbols-outlined icon' 
-                        title='Remove All Followed Games'
-                        onClick={() => {removeCookie('followedGamesAndColors')}}
-                    >delete</span>
+                <div id='following-page-subheader-container' className='m-8 w-[65vw] flex items-center'>
+                    <h2 id='following-page-subheader' className='min-w-fit font-bold'>Following</h2>
+                    <hr id='subheader-divider' className='mx-1.5 w-[90%] h-[2px] bg-slate-300' />
+                    <FontAwesomeIcon icon={faChevronDown} title='Expand/Minimize' onClick={() => {setShowFollowedGames(!showFollowedGames)}} className='mx-1 text-slate-500 cursor-pointer select-none text-xl' />
+                    <FontAwesomeIcon icon={faTrash} title='Empty Followed Games' onClick={() => {removeCookie('followedGamesAndColors')}} className='mx-1 text-slate-500 cursor-pointer select-none text-xl' />
                 </div>
 
                 {showFollowedGames && (
@@ -57,9 +54,9 @@ const FollowingPage = ({ cookies, setCookie, removeCookie }) => {
                     </div>
                 )}
                 
-                <div className='following-page-subheader-container'>
-                    <h2 className='following-page-subheader'>Top Games</h2>
-                    <hr className='subheader-divider-without-expand' />
+                <div id='following-page-subheader-container' className='m-8 w-[65vw] flex items-center'>
+                    <h2 id='following-page-subheader' className='min-w-fit font-bold'>Top Games</h2>
+                    <hr id='subheader-divider' className='ml-6 w-full h-[2px] bg-slate-300' />
                 </div>
 
                 <div className='top-games-container'>

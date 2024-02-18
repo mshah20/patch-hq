@@ -12,7 +12,6 @@ import { useCookies } from 'react-cookie';
 const App = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['consent', 'followedGamesAndColors']);
 
-
   return (
     <>
       <Router>

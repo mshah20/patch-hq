@@ -1,4 +1,3 @@
-import './HomePage.css';
 import { patches } from '../AllPatches';
 import Navbar from "./Navbar";
 import PatchCard from "./PatchCard";
@@ -32,9 +31,9 @@ const HomePage = ({ cookies }) => {
     return (
         <div>
             <Navbar />
-            <div className='patch-cards-container'>
+            <div id='patch-cards-container' className='p-12 grid grid-cols-4 gap-6 justify-center'>
                 {((cookies.followedGamesAndColors === undefined) || (Object.keys(cookies.followedGamesAndColors).length === 0)) && (
-                    <p className='home-page-placeholder-txt'>
+                    <p id='home-page-placeholder-txt' className='absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] text-slate-400 w-[60%] text-center'>
                         It seems like you aren't following any games. Head over to the <b>Following</b> tab to get updates on your favorite games!
                     </p>
                 )}

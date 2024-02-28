@@ -13,7 +13,7 @@ const App = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['consent', 'followedGamesAndColors']);
 
   return (
-    <>
+    <div className='w-[100vw] max-w-full bg-slate-900 m-0 p-0 box-border scroll-smooth font-questrial'>
       <Router>
         <Routes>
           <Route path='/' 
@@ -31,7 +31,7 @@ const App = () => {
       {!cookies.consent && 
         <CookieConsentPopup setCookie={setCookie} />
       }
-    </>  
+    </div>  
   );
 }
 

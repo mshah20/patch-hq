@@ -1,15 +1,15 @@
 import GameCard from './GameCard';
 import Navbar from './Navbar';
-import { useState } from 'react';
-import { patches } from '../AllPatches';
+import { useEffect, useState } from 'react';
 import Select from 'react-select';
-import { defaultColors } from '../DefaultColors';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faTrash } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
 const FollowingPage = ({ cookies, setCookie, removeCookie }) => {
     const [showFollowedGames, setShowFollowedGames] = useState(true);
-    let gameOptions = [];
+    const [gameOptions, setGameOptions] = useState([]);
+    const [isGameOptionsLoading, setIsGameOptionsLoading] = useState(true);
 
     const listFollowedGames = (followedGamesObject) => {
         return Object.entries(followedGamesObject).map(([key, _]) => {
@@ -17,19 +17,40 @@ const FollowingPage = ({ cookies, setCookie, removeCookie }) => {
         })
     }
 
-    const addFollowedGame = (game) => {
-        setCookie('followedGamesAndColors', {...cookies.followedGamesAndColors, [`${game}`]: defaultColors[game]})
+    const addFollowedGame = async (game) => {
+        try {
+            const { data } = await axios.get(`http://localhost:5000/color?game=${game}`);
+            setCookie('followedGamesAndColors', {...cookies.followedGamesAndColors, [`${game}`]: data.color})
+        }
+        catch (e) {
+            console.error(e);
+        }
     }
 
-    Object.keys(patches).map((game) => (
-        gameOptions.push({ 'value': game, 'label': game })
-    ))
+    const fetchAllGames = async () => {
+        try {
+            const { data } = await axios.get('http://localhost:5000/all-games');
+
+            const options = data.map(({game}) => {
+                return { value: game, label: game }
+            })
+            setGameOptions(options);
+            setIsGameOptionsLoading(false);
+        }
+        catch (e) {
+            console.error(e);
+        }   
+    }
+
+    useEffect(() => {
+        fetchAllGames();
+    }, [])
 
     return (
         <>
             <Navbar />
 
-            <div id='following-page-container' className='flex flex-col items-center'>
+            <div id='following-page-container' className='text-slate-50 flex flex-col items-center'>
                 <div id='game-input-container' className='my-12'>
                     <Select
                         id='game-input'
@@ -38,14 +59,25 @@ const FollowingPage = ({ cookies, setCookie, removeCookie }) => {
                         maxMenuHeight={160}
                         onChange={(e) => {addFollowedGame(e.value)}}
                         placeholder='Find a game...'
+                        isLoading={isGameOptionsLoading}
+                        theme={(theme) => ({
+                            ...theme,
+                            colors: {
+                                ...theme.colors,
+                                neutral0: '#334155', //background bg-slate-700
+                                primary25: '#1e293b', //option-hover bg-slate-800
+                                neutral50: '', //placeholder
+                                neutral80: '#f8fafc', //text bg-slate-50
+                            }
+                        })}
                     />
                 </div>
 
                 <div id='following-page-subheader-container' className='m-8 w-[65vw] flex items-center'>
-                    <h2 id='following-page-subheader' className='min-w-fit font-bold'>Following</h2>
+                    <h2 id='following-page-subheader' className='min-w-fit text-xl'>Following</h2>
                     <hr id='subheader-divider' className='mx-1.5 w-[90%] h-[2px] bg-slate-300' />
-                    <FontAwesomeIcon icon={faChevronDown} title='Expand/Minimize' onClick={() => {setShowFollowedGames(!showFollowedGames)}} className='mx-1 text-slate-500 cursor-pointer select-none text-xl' />
-                    <FontAwesomeIcon icon={faTrash} title='Empty Followed Games' onClick={() => {removeCookie('followedGamesAndColors')}} className='mx-1 text-slate-500 cursor-pointer select-none text-xl' />
+                    <FontAwesomeIcon icon={faChevronDown} title='Expand/Minimize' onClick={() => {setShowFollowedGames(!showFollowedGames)}} className='mx-1 text-slate-500 cursor-pointer select-none text-lg' />
+                    <FontAwesomeIcon icon={faTrash} title='Empty Followed Games' onClick={() => {removeCookie('followedGamesAndColors')}} className='mx-1 text-slate-500 cursor-pointer select-none text-lg' />
                 </div>
 
                 {showFollowedGames && (
@@ -55,14 +87,14 @@ const FollowingPage = ({ cookies, setCookie, removeCookie }) => {
                 )}
                 
                 <div id='following-page-subheader-container' className='m-8 w-[65vw] flex items-center'>
-                    <h2 id='following-page-subheader' className='min-w-fit font-bold'>Top Games</h2>
+                    <h2 id='following-page-subheader' className='min-w-fit text-xl'>Top Games</h2>
                     <hr id='subheader-divider' className='ml-6 w-full h-[2px] bg-slate-300' />
                 </div>
 
                 <div className='top-games-container'>
                     <GameCard game='Fortnite' cookies={cookies} setCookie={setCookie} />
-                    <GameCard game='Call of Duty: MWIII' cookies={cookies} setCookie={setCookie} />
-                    <GameCard game='Call of Duty: Warzone' cookies={cookies} setCookie={setCookie} />
+                    <GameCard game='Call of Duty MWIII' cookies={cookies} setCookie={setCookie} />
+                    <GameCard game='Call of Duty Warzone' cookies={cookies} setCookie={setCookie} />
                     <GameCard game='Rainbow Six Siege' cookies={cookies} setCookie={setCookie} />
                     <GameCard game='The Crew Motorfest' cookies={cookies} setCookie={setCookie} />
                 </div>

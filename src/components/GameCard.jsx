@@ -26,7 +26,7 @@ const GameCard = ({ cookies, setCookie, game, isFollowed }) => {
 
     const addFollowedGame = async (game) => {
         try {
-            const { data } = await axios.get(`http://localhost:5000/color?game=${game}`);
+            const { data } = await axios.get(`https://patch-hq-api.onrender.com/color?game=${game}`);
             setCookie('followedGamesAndColors', {...cookies.followedGamesAndColors, [`${game}`]: data.color})
         }
         catch (e) {

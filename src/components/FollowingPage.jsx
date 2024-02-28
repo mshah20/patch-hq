@@ -19,7 +19,7 @@ const FollowingPage = ({ cookies, setCookie, removeCookie }) => {
 
     const addFollowedGame = async (game) => {
         try {
-            const { data } = await axios.get(`http://localhost:5000/color?game=${game}`);
+            const { data } = await axios.get(`https://patch-hq-api.onrender.com/color?game=${game}`);
             setCookie('followedGamesAndColors', {...cookies.followedGamesAndColors, [`${game}`]: data.color})
         }
         catch (e) {
@@ -29,7 +29,7 @@ const FollowingPage = ({ cookies, setCookie, removeCookie }) => {
 
     const fetchAllGames = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/all-games');
+            const { data } = await axios.get('https://patch-hq-api.onrender.com/all-games');
 
             const options = data.map(({game}) => {
                 return { value: game, label: game }

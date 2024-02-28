@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const fetchGamePatches = async (game) => {
     try {
-        const { data } = await axios.get(`http://localhost:5000/patches?game=${game}`);
+        const { data } = await axios.get(`https://patch-hq-api.onrender.com/patches?game=${game}`);
         return data;
     }
     catch (e) {

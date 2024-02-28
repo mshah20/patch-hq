@@ -67,7 +67,6 @@ const HomePage = ({ cookies }) => {
                     </p>
                 )}
                 {cookies.followedGamesAndColors && (listFollowedPatches(cookies.followedGamesAndColors))}
-                {console.log("PATCHNOTES = ", patchNotes)}
                 {(cookies.followedGamesAndColors && (patchNotes.length === 0 || patchNotes[0] === undefined)) && (
                     <p id='home-page-placeholder-txt' className='text-slate-400 absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] w-[60%] text-center'>
                         Uh-oh! There was error retrieving patch notes. Please refresh the page or try again later.

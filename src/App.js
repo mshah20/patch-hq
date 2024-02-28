@@ -1,4 +1,3 @@
-import './App.css';
 import CookieConsentPopup from './components/CookieConsentPopup';
 import FollowingPage from './components/FollowingPage';
 import HomePage from './components/HomePage';

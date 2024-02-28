@@ -10,7 +10,7 @@ const Navbar = () => {
                 <h1>HQ</h1>
             </div>
             <div id='nav-links-container' className='flex'>
-                <h3 className='py-1 px-4 border-2 border-slate-50 rounded-full cursor-pointer font-bold transition-all duration-200 hover:text-slate-800 hover:bg-slate-50' onClick={() => {navigate('/oatch-hq')}}>HQ</h3>
+                <h3 className='py-1 px-4 border-2 border-slate-50 rounded-full cursor-pointer font-bold transition-all duration-200 hover:text-slate-800 hover:bg-slate-50' onClick={() => {navigate('/patch-hq')}}>HQ</h3>
                 <h3 className='py-1 px-4 ml-7 border-2 border-slate-50 rounded-full cursor-pointer font-bold transition-all duration-200 hover:text-slate-800 hover:bg-slate-50' onClick={() => {navigate('/patch-hq/following')}}>Following</h3>
                 <a href='https://github.com/mshah20/patch-hq' target='_blank' rel='noreferrer' title='View on Github' className='py-1 px-4 ml-7 border-2 border-slate-50 rounded-full cursor-pointer font-bold transition-all duration-200 hover:text-slate-800 hover:bg-slate-50'><h3>Github</h3></a>
             </div>

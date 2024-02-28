@@ -15,11 +15,11 @@ const App = () => {
     <div className='w-[100vw] max-w-full bg-slate-900 m-0 p-0 box-border scroll-smooth font-questrial'>
       <Router>
         <Routes>
-          <Route path='/' 
+          <Route path='/patch-hq' 
             element={<HomePage
               cookies={cookies}
             />} />
-          <Route path='/following' 
+          <Route path='/patch-hq/following' 
             element={<FollowingPage 
               cookies={cookies} 
               setCookie={setCookie} 

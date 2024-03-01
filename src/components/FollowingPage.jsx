@@ -50,7 +50,7 @@ const FollowingPage = ({ cookies, setCookie, removeCookie }) => {
         <>
             <Navbar />
 
-            <div id='following-page-container' className='text-slate-50 flex flex-col items-center'>
+            <div id='following-page-container' className='min-h-[100vh] text-slate-50 flex flex-col items-center'>
                 <div id='game-input-container' className='my-12'>
                     <Select
                         id='game-input'

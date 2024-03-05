@@ -51,7 +51,7 @@ const FollowingPage = ({ cookies, setCookie, removeCookie }) => {
             <Navbar />
 
             <div id='following-page-container' className='min-h-[100vh] text-slate-50 flex flex-col items-center'>
-                <div id='game-input-container' className='my-12'>
+                <div id='game-input-container' className='my-12 flex flex-col items-center'>
                     <Select
                         id='game-input'
                         className='min-w-96 max-w-[80vw] h-10'
@@ -71,7 +71,10 @@ const FollowingPage = ({ cookies, setCookie, removeCookie }) => {
                             }
                         })}
                     />
+                    <span id='loading-note' className='mt-2 text-slate-400 text-sm italic'>NOTE: Initial load may take a moment.</span>
                 </div>
+
+                
 
                 <div id='following-page-subheader-container' className='m-8 w-[65vw] flex items-center'>
                     <h2 id='following-page-subheader' className='min-w-fit text-xl'>Following</h2>

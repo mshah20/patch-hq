@@ -66,11 +66,15 @@ const HomePage = ({ cookies }) => {
                         It seems like you aren't following any games. Head over to the <b>Following</b> tab to get updates on your favorite games!
                     </p>
                 )}
-                {cookies.followedGamesAndColors && (listFollowedPatches(cookies.followedGamesAndColors))}
-                {((Object.keys(cookies.followedGamesAndColors).length > 0) && (patchNotes.length === 0 || patchNotes[0] === undefined)) && (
-                    <p id='home-page-placeholder-txt' className='text-slate-400 absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] w-[60%] text-center'>
-                        Uh-oh! There was error retrieving patch notes. Please refresh the page or try again later.
-                    </p>
+                {cookies.followedGamesAndColors && (
+                    listFollowedPatches(cookies.followedGamesAndColors)
+                )}
+                {cookies.followedGamesAndColors && (
+                    ((Object.keys(cookies.followedGamesAndColors).length > 0) && (patchNotes.length === 0 || patchNotes[0] === undefined)) && (
+                        <p id='home-page-placeholder-txt' className='text-slate-400 absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] w-[60%] text-center'>
+                            Uh-oh! There was error retrieving patch notes. Please refresh the page or try again later.
+                        </p>                    
+                    )
                 )}
             </div>
         </div>

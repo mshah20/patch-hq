@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/patch-hq/static/css/main.40607fe4.css",
-    "main.js": "/patch-hq/static/js/main.6b94ade4.js",
+    "main.js": "/patch-hq/static/js/main.de59808e.js",
     "index.html": "/patch-hq/index.html",
     "main.40607fe4.css.map": "/patch-hq/static/css/main.40607fe4.css.map",
-    "main.6b94ade4.js.map": "/patch-hq/static/js/main.6b94ade4.js.map"
+    "main.de59808e.js.map": "/patch-hq/static/js/main.de59808e.js.map"
   },
   "entrypoints": [
     "static/css/main.40607fe4.css",
-    "static/js/main.6b94ade4.js"
+    "static/js/main.de59808e.js"
   ]
 }

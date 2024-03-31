@@ -4,7 +4,7 @@
     Stay up to date with updates to your favorite games, all in one place.
   </p>
   <a href="https://mshah20.github.io/patch-hq">
-    <p>https://mshah20.github.io/patch-hq"</p>
+    <p>https://mshah20.github.io/patch-hq</p>
   </a>
 
   <img src="https://raw.githubusercontent.com/mshah20/patch-hq/main/src/images/demo.png" alt="Demo" width="100%" />
